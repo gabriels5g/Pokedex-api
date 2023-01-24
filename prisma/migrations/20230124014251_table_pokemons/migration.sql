@@ -4,5 +4,7 @@ CREATE TABLE "Pokemons" (
     "name" TEXT NOT NULL,
     "generation" TEXT NOT NULL,
     "region" TEXT NOT NULL,
-    "type" TEXT NOT NULL
+    "type" TEXT NOT NULL,
+    "sprite_front" TEXT NOT NULL,
+    "sprite_back" TEXT NOT NULL
 );

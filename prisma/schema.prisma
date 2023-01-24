@@ -11,9 +11,11 @@ datasource db {
 }
 
 model Pokemons {
-  id         Int    @id @default(autoincrement())
-  name       String
-  generation String
-  region     String
-  type       String
+  id           Int    @id @default(autoincrement())
+  name         String
+  generation   String
+  region       String
+  type         String
+  sprite_front String
+  sprite_back  String
 }

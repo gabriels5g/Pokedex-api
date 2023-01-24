@@ -25,7 +25,9 @@ export class PokemonRepository {
           foundPokemon.id,
           foundPokemon.name,
           foundPokemon.generation,
-          foundPokemon.type
+          foundPokemon.type,
+          foundPokemon.sprite_front,
+          foundPokemon.sprite_back
         )
       : undefined;
   }
@@ -42,7 +44,9 @@ export class PokemonRepository {
       pokemon.id,
       pokemon.name,
       pokemon.generation,
-      pokemon.type
+      pokemon.type,
+      pokemon.sprite_front,
+      pokemon.sprite_back
     );
   }
 }

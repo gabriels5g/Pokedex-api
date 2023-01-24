@@ -3,6 +3,8 @@ export interface PokeProps {
   name: string;
   generation: string;
   types: string;
+  sprite_front: string;
+  sprite_back: string;
 }
 
 export class Pokemon {
@@ -10,6 +12,8 @@ export class Pokemon {
     public id: number,
     public name: string,
     public generation: string,
-    public type: string
+    public type: string,
+    public sprite_front: string,
+    public sprite_back: string
   ) {}
 }
