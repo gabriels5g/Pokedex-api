@@ -1,35 +1,15 @@
-import { PrismaClient } from "@prisma/client";
 import { Request, Response } from "express";
+import { PrismaRepository } from "../http/prisma-repository";
 import { PokemonRepository } from "../repositories/Pokemon-repository";
 import { PokedexUseCase } from "../UseCases/Pokedex-useCases";
-const prisma = new PrismaClient();
-const repository = new PokemonRepository(prisma);
-const usecase = new PokedexUseCase(repository);
 
 export class PokemonController {
-  async GetFindByName(req: Request, res: Response) {
-    const { name } = req.params;
+  async handle(req: Request, res: Response) {
+    const repository = new PrismaRepository();
+    const pokemonList = new PokedexUseCase(repository);
 
-    const pokemon = await usecase.findPokemonByName(name);
-    if (!pokemon) {
-      return res.status(404).json({ error: "Pokemon not found" });
-    }
-    res.json(pokemon);
-  }
+    const pokemons = await pokemonList.execute();
 
-  async GetFindByType(req: Request, res: Response) {
-    const { type } = req.params;
-
-    const pokemon = await usecase.findPokemonByType(type);
-    if (!pokemon) {
-      return res.status(404).json({ error: "Pokemon not found" });
-    }
-    res.json(pokemon);
-  }
-
-  async GetFindAll(req: Request, res: Response) {
-    const pokemon = await usecase.listAllPokemons();
-
-    res.json(pokemon);
+    res.json(pokemons);
   }
 }

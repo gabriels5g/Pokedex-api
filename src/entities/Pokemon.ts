@@ -1,19 +1,38 @@
+import crypto from "node:crypto";
+
 export interface PokeProps {
-  id: number;
+  id?: string;
   name: string;
   generation: string;
+  region: string;
   types: string;
   sprite_front: string;
   sprite_back: string;
 }
 
 export class Pokemon {
-  constructor(
-    public id: number,
-    public name: string,
-    public generation: string,
-    public type: string,
-    public sprite_front: string,
-    public sprite_back: string
-  ) {}
+  constructor(private props: PokeProps) {}
+  public get id(): string {
+    return this.props.id;
+  }
+  public get name(): string {
+    return this.props.name;
+  }
+  public get generation(): string {
+    return this.props.generation;
+  }
+  public get types(): string {
+    return this.props.types;
+  }
+
+  public get region(): string {
+    return this.props.region;
+  }
+  public get sprite_front(): string {
+    return this.props.sprite_front;
+  }
+
+  public get sprite_back(): string {
+    return this.props.sprite_back;
+  }
 }
